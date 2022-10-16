@@ -1,23 +1,41 @@
-Write a base class to represent a student. Below is a starter code.
-Feel free to add any more new features to your class.
-As a minimum a student has a name and age and a unique ID.
+class Student:
+    def __init__(self, name, age, id, subjects):
+        self.name = name
+        self.age = age
+        self.id = id
+        self.subjects = subjects
 
-Create a new subclass from student to represent a concrete student doing a specialization, for example:
-Software Student and Data Science student.
 
-# """
-#
-#
-# class Student:
-#
-#     def __init__(self, name, age, id):
-#         self.name = name
-#         self.age = age
-#         self.id = id
-#         self.subjects = dict()
-#
-#
-# # class CFGStudent(<should inherit from Student>)
-# #     create new methods that manage student's subects (add/remove new subject and its graade to the dict)
-# #     create a method to view all subjects taken by a student
-# #     create a method  (and a new variable) to get student's overall mark (use average)
+class CFGStudent(Student):
+    def __init__(self, name, age, id, subjects, specialisation):
+        super(CFGStudent, self).__init__(name, age, id, subjects)
+        self.specialisation = specialisation
+
+    def add_subject(self, subject):
+        self.subjects.append(subject)
+
+    def remove_subject(self, subject):
+        self.subjects.remove(subject)
+
+    def view_subjects(self):
+        for subject in self.subjects:
+            print(subject)
+
+    def average_grade(self):
+        total_grade = 0
+        for subject in self.subjects:
+            total_grade += subject["grade"]
+        return total_grade / len(self.subjects)
+
+
+Asha = CFGStudent("Asha", 25, 342, [], "software")
+Asha.add_subject({"name": "python", "grade": 99})
+Asha.add_subject({"name": "SQL", "grade": 100})
+Asha.add_subject({"name": "OOP", "grade": 75})
+print("Subjects so far ")
+Asha.view_subjects()
+Asha.remove_subject({"name": "OOP", "grade": 75})
+print("Subjects after removal ")
+Asha.view_subjects()
+print("Average grade")
+print(Asha.average_grade())
