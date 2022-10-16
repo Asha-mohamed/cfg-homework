@@ -9,7 +9,7 @@ class CashRegister:
 
     def add_item(self):
         self.item = {"dress": 70, "purse": 65, "jacket": 149, "heels": 99}
-        print("select items to add from the list using the name of the item")
+        print("select items to add from the list using the name of the item, press = to continue")
         print(self.item)
 
         for i in range(0,50):
