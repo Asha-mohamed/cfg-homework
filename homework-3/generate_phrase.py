@@ -30,17 +30,17 @@ def generate_phrase(characters, phrase):
     if len(characters) < len(phrase):
         return False
 
-    for i in set(phrase):
-        if i not in set(characters):
+    for i in range(phrase):
+        if i not in range(characters):
             return False
 
     character_dict = {}
     phrase_dict = {}
 
-    for i in set(characters):
+    for i in range(characters):
         character_dict[i] = characters.count(i)
 
-    for i in set(phrase):
+    for i in range(phrase):
         phrase_dict[i] = phrase.count(i)
 
     for key, value in phrase_dict.items():
